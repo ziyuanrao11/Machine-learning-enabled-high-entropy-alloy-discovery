@@ -1,3 +1,6 @@
 # Machine learning-enabled high-entropy alloy discovery
 This is the code for the paper 'Machine learning-enabled high-entropy alloy discovery'
 High-entropy alloys are solid solutions of multiple principal elements, capable of reaching composition and feature regimes inaccessible for dilute materials. Discovering those with valuable properties, however, relies on serendipity, as thermodynamic alloy design rules alone often fail in high-dimensional composition spaces. Here, we propose an active-learning strategy to accelerate the design of novel high-entropy Invar alloys in a practically infinite compositional space, based on very sparse data. Our approach works as a closed-loop integrating machine learning with density-functional theory, thermodynamic calculations, and experiments. After processing and characterizing 17 new alloys, we identified 2 high-entropy Invar alloys with extremely low thermal expansion coefficients around 2×10-6 K-1 at 300 K. Our study thus opens a new pathway for the fast and automated discovery of high-entropy alloys with optimal thermal, magnetic and electrical properties.
+
+![Figure](https://user-images.githubusercontent.com/68018910/155887212-45d7878a-2bc5-49ac-8d88-de009bc6dbcf.jpg)
+

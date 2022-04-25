@@ -18,7 +18,7 @@ from bayes_opt import BayesianOptimization
 import time
 import os
 from sklearn import preprocessing
-
+#build the model
 class Net(nn.Module):  
     def __init__(self, n_feature=17, n_hidden=218, n_output=1, w = 6):
         super(Net, self).__init__()    
@@ -49,7 +49,7 @@ class Net(nn.Module):
         # x = self.Dropout (x)
           # 输出值
         return x
-
+#set the parameters for training
 def train(net, num_epochs, batch_size, train_features, test_features, train_labels, test_labels,
           train_loader,
           optimizer):
@@ -69,7 +69,7 @@ def train(net, num_epochs, batch_size, train_features, test_features, train_labe
             print ("epoch %d: train loss %f, test loss %f" % (epoch, train_ls[-1], test_ls[-1]))
         
     print ("=== train end ===")
-    
+#set the parameters for testing    
 def test(model, test_loader):
     model.eval()
     test_loss = 0
@@ -88,9 +88,7 @@ def test(model, test_loader):
     
     return test_loss   
 
-    
-
-
+#train the data
 def train_model(batch_size,lr, module__n_hidden,module__w):
     module__n_hidden = int(module__n_hidden) # number of neurons per layer
     module__w = int(module__w) # number of hidden layers
@@ -113,7 +111,7 @@ def train_model(batch_size,lr, module__n_hidden,module__w):
     r = -np.abs(train_loss-test_loss)
     
     return -test_loss
-
+#build the ensemble traning for NN
 import datetime
 import torch.utils.data as Data
 import pandas as pd

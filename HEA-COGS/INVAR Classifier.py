@@ -2,7 +2,7 @@
 """
 Created on Fri Feb 25 18:33:41 2022
 
-@author: Po-Yen Tung
+@author: Po-Yen Tung; Ziyuan Rao
 """
 import cv2
 import os

@@ -12,7 +12,7 @@ import numpy as np
 import pandas as pd
 from torch.utils.data import Dataset, DataLoader
 import random
-
+#define the MAPE loss
 class MAPELoss(nn.Module):
      def __init__(self):
         super(MAPELoss, self).__init__() 
@@ -21,7 +21,7 @@ class MAPELoss(nn.Module):
          loss = torch.mean(torch.abs((target - output) / target))
          # loss = (-1)*loss
          return loss
-     
+#normalize the data     
 def minmaxscaler(data):
     min = np.amin(data)
     max = np.amax(data)    

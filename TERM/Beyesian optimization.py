@@ -22,15 +22,16 @@ import os
 from sklearn import preprocessing
 
 bounds = {'lr': (0.0005,0.001), 'batch_size': (32,64), 'module__n_hidden': (16,526),
-          'module__w': (2,10)}
+          'module__w': (2,10)} #here we define the bounnds to optimize
 optimizer = BayesianOptimization(
     f=train_model,
     pbounds=bounds,
     random_state=1,
 )
 
-optimizer.maximize(init_points=10, n_iter=1)
+optimizer.maximize(init_points=10, n_iter=1) #set the parameter for BO
 print(optimizer.max)
+#save the results 
 table = pd.DataFrame(columns=['target','batch_size','lr','module__n_hidden','module__w'])
 for res in optimizer.res:
     table=table.append(pd.DataFrame({'target':[res['target']],'batch_size':[res['params']['batch_size']],

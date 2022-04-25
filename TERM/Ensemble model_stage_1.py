@@ -21,6 +21,7 @@ from sklearn.metrics import explained_variance_score
 import matplotlib.pyplot as plt
 import datetime
 import pandas as pd
+#for GBDT training
 def Tree(n,j, WAE_x):
     target = pd.read_excel('BO/05-18-12-09-Invar_GBDT(50+500).xlsx')
     colsample_bytree = target.at[n,'colsample_bytree']
@@ -61,7 +62,7 @@ def Tree(n,j, WAE_x):
     model.fit(train_features, train_labels)
     preds = model.predict(WAE_x)
     return preds
-
+# build the NN architechture
 class Net(nn.Module):  
         def __init__(self, n_feature, n_hidden, n_output, w):
             super(Net, self).__init__()   
@@ -91,7 +92,7 @@ class Net(nn.Module):
             # x = self.BN_3(x)
             # x = self.Dropout (x)
             return x
-        
+#define the NN traning        
 def NN(n,seed, WAE_x):
     target = pd.read_excel('BO/05-18-19-09-Invar_NN_BO(10+100).xlsx')
     batch_size = target.at[n,'batch_size']
@@ -111,7 +112,7 @@ def NN(n,seed, WAE_x):
     preds=preds.data.numpy()
     return preds
 
-#   
+#start the emsemble training 
 r=0
 Comp_total = pd.DataFrame()
 for i in range(0,10):

@@ -78,3 +78,4 @@ def normalizing_data(data, seed=42):
   
   train_features, test_features, train_labels, test_labels = train_test_split(x, y, test_size=0.15, random_state=seed, stratify=y_binned)
   return train_features, test_features, train_labels, test_labels
+#the traning we use the same architecture with the fisrt stage, pls refer to the first stage for traning

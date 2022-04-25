@@ -30,6 +30,7 @@ train_features, test_features, train_labels, test_labels = normalizing_data(data
 train_features, test_features = train_features.cpu().data.numpy(),test_features.cpu().data.numpy()
 train_labels, test_labels = train_labels.cpu().data.numpy(), test_labels.cpu().data.numpy()
 train_labels, test_labels = train_labels.reshape(-1), test_labels.reshape(-1) 
+#define the model
 def train_model(num_leaves,
                 min_child_samples,
             learning_rate,
@@ -63,6 +64,7 @@ def train_model(num_leaves,
     y_pred = model.predict(test_features)
     error = -np.mean(np.abs((test_labels - y_pred) / test_labels))       # print(error)     
     return error
+#define the parameters for optimize
 bounds = {'num_leaves': (5, 60),#50
           'min_child_samples':(1, 50),
           'learning_rate': (0.001, 1),
@@ -80,7 +82,9 @@ optimizer = BayesianOptimization(
     pbounds=bounds,
     random_state=1,
 )
+#optimize the parameter with BO
 optimizer.maximize(init_points = 10, n_iter=1)
+#save the results
 table = pd.DataFrame(columns=['target', 'colsample_bytree', 'learning_rate', 'max_bin',
                       'max_depth','min_child_samples','min_child_weight','min_split_gain',
                       'n_estimators','num_leaves','reg_alpha','reg_lambda','subsample'])
